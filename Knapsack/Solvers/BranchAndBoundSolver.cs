@@ -30,7 +30,7 @@
                 var node = queue.Dequeue();
                 
 
-                if (node.Bound > best.Value && node.Height < this.Items.Count - 1)
+                if (node.Bound > best.Value && node.Height < this.Items.Count)
                 {
                     Node with = new Node(node);
 

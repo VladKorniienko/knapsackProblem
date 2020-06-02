@@ -31,26 +31,28 @@
 
         public void ComputeBound(IList<Item> items, int capacity)
         {
-          
-           int w = this.Weight;
+
+            int w = this.Weight;
             this.Bound = this.Value;
             int index = this.Height;
             Item currentItem;
 
             do
             {
-                currentItem = items[index];
+                if (index == items.Count)
+                    currentItem = items[index - 1];
+                else
+                    currentItem = items[index];
                 if (w + currentItem.Weight > capacity)
                 {
                     break;
                 }
-
                 w += currentItem.Weight;
                 this.Bound += currentItem.Value;
                 index++;
             }
             while (index < items.Count);
-          
+
             this.Bound += (capacity - w) * currentItem.Ratio;
         }
 
